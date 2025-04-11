@@ -1,4 +1,18 @@
 import Image from "next/image";
+import { OpenAI } from "openai";
+
+const openai = new OpenAI({ apiKey: process.env.OPEN_AI_KEY });
+
+async function testAPI() {
+  try {
+    const response = await openai.models.list();
+    console.log("API Key is valid:", response);
+  } catch (error) {
+    console.error("Error with API Key:", error.message);
+  }
+}
+
+testAPI();
 
 export default function Home() {
   return (
